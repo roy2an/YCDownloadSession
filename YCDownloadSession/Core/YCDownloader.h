@@ -53,7 +53,7 @@ typedef NS_ENUM(NSUInteger, YCDownloadTaskCacheMode) {
  @param completion 下载成功或者失败回调
  @return 下载任务的task
  */
-- (nonnull YCDownloadTask *)downloadWithUrl:(nonnull NSString *)url progress:(YCProgressHandler)progress completion:(YCCompletionHandler)completion;
+- (nonnull YCDownloadTask *)downloadWithUrl:(nonnull NSString *)url progress:(YCProgressHandler _Nullable )progress completion:(YCCompletionHandler _Nonnull )completion;
 
 /**
  通过request对象创建下载任务，可以自定义header等请求信息，手动调用resumeTask:开始下载
@@ -63,7 +63,7 @@ typedef NS_ENUM(NSUInteger, YCDownloadTaskCacheMode) {
  @param completion 下载成功失败回调
  @return 下载任务task
  */
-- (nonnull YCDownloadTask *)downloadWithRequest:(nonnull NSURLRequest *)request progress:(YCProgressHandler)progress completion:(YCCompletionHandler)completion;
+- (nonnull YCDownloadTask *)downloadWithRequest:(nonnull NSURLRequest *)request progress:(YCProgressHandler _Nullable )progress completion:(YCCompletionHandler _Nullable )completion;
 
 /**
  通过request对象进行创建下载任务，可以自定义header等请求信息，手动调用resumeTask:开始下载
@@ -74,7 +74,7 @@ typedef NS_ENUM(NSUInteger, YCDownloadTaskCacheMode) {
  @param priority 下载任务优先级，默认是 NSURLSessionTaskPriorityDefault, 取值范围0~1
  @return 下载任务task
  */
-- (nonnull YCDownloadTask *)downloadWithRequest:(nonnull NSURLRequest *)request progress:(YCProgressHandler)progress completion:(YCCompletionHandler)completion priority:(float)priority;
+- (nonnull YCDownloadTask *)downloadWithRequest:(nonnull NSURLRequest *)request progress:(YCProgressHandler _Nonnull )progress completion:(YCCompletionHandler _Nullable )completion priority:(float)priority;
 
 
 /**
@@ -85,7 +85,7 @@ typedef NS_ENUM(NSUInteger, YCDownloadTaskCacheMode) {
  @param completion 下载成功失败回调
  @return 下载任务task
  */
-- (nullable YCDownloadTask *)resumeDownloadTaskWithTid:(NSString *)tid progress:(YCProgressHandler)progress completion:(YCCompletionHandler)completion;
+- (nullable YCDownloadTask *)resumeDownloadTaskWithTid:(NSString *_Nullable)tid progress:(YCProgressHandler _Nullable )progress completion:(YCCompletionHandler _Nullable )completion;
 
 /**
  继续下载任务
@@ -118,6 +118,6 @@ typedef NS_ENUM(NSUInteger, YCDownloadTaskCacheMode) {
  @param handler 后台任务结束后的调用的处理方法
  @param identifier background session 的标识
  */
--(void)addCompletionHandler:(BGCompletedHandler)handler identifier:(nonnull NSString *)identifier;
+-(void)addCompletionHandler:(BGCompletedHandler _Nullable )handler identifier:(nonnull NSString *)identifier;
 
 @end

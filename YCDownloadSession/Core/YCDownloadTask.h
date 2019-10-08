@@ -44,9 +44,9 @@ typedef void (^YCProgressHandler)(NSProgress * _Nonnull progress,YCDownloadTask 
 #pragma mark - method
 - (void)updateTask;
 
-+ (nonnull instancetype)taskWithRequest:(nonnull NSURLRequest *)request progress:(YCProgressHandler)progress completion:(YCCompletionHandler)completion;
++ (nonnull instancetype)taskWithRequest:(nonnull NSURLRequest *)request progress:(YCProgressHandler _Nullable)progress completion:(YCCompletionHandler _Nullable )completion;
 
-+ (nonnull instancetype)taskWithRequest:(nonnull NSURLRequest *)request progress:(YCProgressHandler)progress completion:(YCCompletionHandler)completion priority:(float)priority;
++ (nonnull instancetype)taskWithRequest:(nonnull NSURLRequest *)request progress:(YCProgressHandler _Nullable)progress completion:(YCCompletionHandler _Nullable )completion priority:(float)priority;
 
 + (nonnull NSString *)downloaderVerison;
 
@@ -56,19 +56,19 @@ typedef void (^YCProgressHandler)(NSProgress * _Nonnull progress,YCDownloadTask 
 #pragma mark - YCResumeData
 @interface YCResumeData: NSObject
 
-@property (nonatomic, copy) NSString *downloadUrl;
-@property (nonatomic, strong) NSMutableURLRequest *currentRequest;
-@property (nonatomic, strong) NSMutableURLRequest *originalRequest;
+@property (nonatomic, copy, nullable) NSString *downloadUrl;
+@property (nonatomic, strong, nullable) NSMutableURLRequest *currentRequest;
+@property (nonatomic, strong, nullable) NSMutableURLRequest *originalRequest;
 @property (nonatomic, assign) NSInteger downloadSize;
-@property (nonatomic, copy) NSString *resumeTag;
+@property (nonatomic, copy, nullable) NSString *resumeTag;
 @property (nonatomic, assign) NSInteger resumeInfoVersion;
-@property (nonatomic, strong) NSDate *downloadDate;
-@property (nonatomic, copy) NSString *tempName;
-@property (nonatomic, copy) NSString *resumeRange;
+@property (nonatomic, strong, nullable) NSDate *downloadDate;
+@property (nonatomic, copy, nullable) NSString *tempName;
+@property (nonatomic, copy, nullable) NSString *resumeRange;
 
-- (instancetype)initWithResumeData:(NSData *)resumeData;
+- (instancetype _Nullable )initWithResumeData:(NSData *_Nullable)resumeData;
 
-+ (NSURLSessionDownloadTask *)downloadTaskWithCorrectResumeData:(NSData *)resumeData urlSession:(NSURLSession *)urlSession;
++ (NSURLSessionDownloadTask *_Nullable)downloadTaskWithCorrectResumeData:(NSData *_Nullable)resumeData urlSession:(NSURLSession *_Nullable)urlSession;
 
 /**
  清除 NSURLSessionResumeByteRange 字段
@@ -77,6 +77,6 @@ typedef void (^YCProgressHandler)(NSProgress * _Nonnull progress,YCDownloadTask 
  @param resumeData 原始resumeData
  @return 清除后resumeData
  */
-+ (NSData *)cleanResumeData:(NSData *)resumeData;
++ (NSData *_Nullable)cleanResumeData:(NSData *_Nullable)resumeData;
 @end
 
